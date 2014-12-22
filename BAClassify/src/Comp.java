@@ -6,12 +6,14 @@ public class Comp extends Coords{
 	 * Represents a cluster with peak coordinate
 	 * @author Noah Rubin
 	 * ------------ Fields ---------------------
-	 * coordinates x, y, z: peak coordinate of cluster in 3-space
-	 * search: HashMap of structure {anatomical label : BA label}
+	 * x: |
+	 * y: | --> Coordinates in 3 space
+	 * Z: |
+	 * search: HashMap (Dictionary) of structure {anatomical label : BA label}
 	 * ------------ Methods --------------------
 	 * Getters and Setters for coordinates
-	 * equals: see Coords class
-	 * distanceTo: see Coords class 
+	 * equals: tells whether cluster coordinates are equal or not
+	 * distanceTo: gives Euclidean distance to another cluster in 3-space
 	 **/
 	
 	//Instance fields

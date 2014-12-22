@@ -12,7 +12,7 @@ public abstract class BADatabaseAccess {
 	 * ------------ Fields ---------------------
 	 * database: Database of cluster peaks and associated aal:BA lists
 	 * ------------ Methods --------------------
-	 * binLogic: calculates proper bin for cluster
+	 * binLogic: calculates proper bin for given cluster
 	 * buildDatabase: builds ArrayList database from text file 
 	 * writeToDatabase: writes database information to text file
 	 * Note --> data in text file must be stored in form:
@@ -22,6 +22,19 @@ public abstract class BADatabaseAccess {
 	public static ArrayList<ArrayList<Comp>> database = new ArrayList<ArrayList<Comp>>();
 	
 	protected static int binLogic(Comp cluster){
+		/**
+		 * Returns: Proper bin in database for cluster
+		 * @param cluster: cluster in 3 space
+		 * bin 0: x > 0, y > 0, z > 0
+		 * bin 1: x > 0, y > 0, z < 0
+		 * bin 2: x > 0, y < 0, z > 0
+		 * bin 3: x > 0, y < 0, z < 0
+		 * bin 4: x < 0, y < 0, z < 0
+		 * bin 5: x < 0, y < 0, z > 0
+		 * bin 6: x < 0, y > 0, z < 0
+		 * bin 7: x < 0, y > 0, z > 0
+		 * Precondition: cluster is Comp object with valid coordinates
+		 */
 		if (cluster.getX() >= 0){
 			if (cluster.getY() >= 0){
 				if (cluster.getZ() >= 0){
@@ -62,14 +75,8 @@ public abstract class BADatabaseAccess {
 	
 	public static void buildDatabase(String file_path) throws FileNotFoundException, IOException{
 		/**Procedure: Builds database with 8 bins from text file
-		 * bin 0: x > 0, y > 0, z > 0
-		 * bin 1: x > 0, y > 0, z < 0
-		 * bin 2: x > 0, y < 0, z > 0
-		 * bin 3: x > 0, y < 0, z < 0
-		 * bin 4: x < 0, y < 0, z < 0
-		 * bin 5: x < 0, y < 0, z > 0
-		 * bin 6: x < 0, y > 0, z < 0
-		 * bin 7: x < 0, y > 0, z > 0
+		 * See binLogic for bin information\
+		 * @param file_path: file path for text file database
 		 * Precondition: file_path end point is text file with data in form:
 		 * x y z label1 BA label2 BA ... LabelN BA
 		 * **If data in text file breaks this format, build will fail**
@@ -151,6 +158,7 @@ public abstract class BADatabaseAccess {
 	public static void writeToDatabase(String file_path) throws FileNotFoundException, IOException {
 		/**
 		 * Procedure: Writes all data in BA database to text file database 
+		 * @param file_path: file path for text file datbase
 		 * Writes data to text file for each cluster in following format:
 		 * x y z label BA label BA (follows convention detailed in class spec)
 		 * Precondition: file_path is path to text file database
