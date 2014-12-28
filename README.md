@@ -37,4 +37,4 @@ BAClassify: Brodmann Area Classification
     </ol>
 
 <h1> Feedback and Questions/Concerns </h1>
-<p> Your feedback is welcome! For all questions, concerns, and comments please email me at nar62@cornell.edu <\p>
+Your feedback is welcome! For all questions, concerns, and comments please email me at nar62@cornell.edu
