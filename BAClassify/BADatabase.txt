@@ -1,0 +1,2 @@
+22 0 28 Insula_R 13 Caudate_R 0
+22 10 28 Insula_R 13 Rolandic_Oper_R 43 Caudate_R 0
